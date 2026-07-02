@@ -6,9 +6,20 @@ export interface Project {
   imageUrl: string;
   githubUrl?: string;
   demoUrl?: string;
+  demoVideoUrl?: string;
   category: 'Robotics' | 'AI/ML' | 'Automation' | 'Other';
   featured: boolean;
 }
+
+export interface TimelineItem {
+  id: string;
+  year: string;
+  title: string;
+  description: string;
+  icon: string;
+  type: 'project' | 'education' | 'work' | 'achievement';
+}
+
 
 export interface Experience {
   id: string;

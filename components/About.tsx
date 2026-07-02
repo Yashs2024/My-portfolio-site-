@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PERSONAL_INFO } from '../constants';
 import { motion } from 'framer-motion';
 import { User, Target, Cpu, Send, Mail, Check, Loader2 } from 'lucide-react';
+import GitHubStats from './GitHubStats';
 
 const About: React.FC = () => {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
@@ -170,6 +171,9 @@ const About: React.FC = () => {
             </motion.div>
           </motion.div>
         </div>
+
+        {/* GitHub Live Stats Widget */}
+        <GitHubStats />
       </div>
     </section>
   );

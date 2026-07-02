@@ -1,4 +1,4 @@
-import { Project, Experience, Education, SkillCategory, ChartDataPoint, Achievement } from './types';
+import { Project, Experience, Education, SkillCategory, ChartDataPoint, Achievement, TimelineItem } from './types';
 import profileImage from './assets/profilee.jpg';
 import vectrasimImage from './assets/vectrasim.png.png';
 
@@ -84,6 +84,7 @@ export const PROJECTS: Project[] = [
     imageUrl: vectrasimImage,
     category: "Robotics",
     featured: true,
+    demoVideoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     githubUrl: "https://github.com/Yashs2024/robotic-Slam-lidar-simulator"
   },
   {
@@ -94,6 +95,7 @@ export const PROJECTS: Project[] = [
     imageUrl: "https://raw.githubusercontent.com/Yashs2024/roboarm-nexus/main/public/images/Screenshot%202026-03-07%20182401.png",
     category: "Robotics",
     featured: true,
+    demoVideoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     githubUrl: "https://github.com/Yashs2024/roboarm-nexus"
   },
   {
@@ -192,5 +194,80 @@ export const ACHIEVEMENTS: Achievement[] = [
     title: "Academic Achievement",
     description: "8.00 CGPA in Robotics & Automation Engineering",
     icon: "GraduationCap"
+  }
+];
+
+export const TIMELINE: TimelineItem[] = [
+  {
+    id: "t1",
+    year: "2021",
+    title: "First Arduino Project",
+    description: "Built my first electronics project — a sensor-driven LED matrix using Arduino UNO. Sparked a passion for embedded systems and hardware-software integration.",
+    icon: "🔌",
+    type: "project"
+  },
+  {
+    id: "t2",
+    year: "2023",
+    title: "B.Tech Robotics & Automation — MES Wadia",
+    description: "Enrolled in Robotics & Automation Engineering at MES Wadia College of Engineering, Pune. Began studying kinematics, control systems, and embedded programming.",
+    icon: "🎓",
+    type: "education"
+  },
+  {
+    id: "t3",
+    year: "2024",
+    title: "AI-Controlled Biomimetic Hand",
+    description: "Built an anthropomorphic robotic hand controlled by gestures using MediaPipe + UDP. First real-world intersection of AI and physical robotics.",
+    icon: "🤖",
+    type: "project"
+  },
+  {
+    id: "t4",
+    year: "2025 Q1",
+    title: "RoboArm Nexus & RoboHand Simulator",
+    description: "Developed browser-based robotic arm control suite with React, MediaPipe, and Google Gemini AI — with 2-DOF IK simulation and AI firmware generation.",
+    icon: "💻",
+    type: "project"
+  },
+  {
+    id: "t5",
+    year: "2025 Q2",
+    title: "Smart India Hackathon 2025",
+    description: "Participated in SIH 2025. Built AlumniX — a scalable alumni management system with an AI chatbot handling 50+ query types at 85% accuracy.",
+    icon: "🏆",
+    type: "achievement"
+  },
+  {
+    id: "t6",
+    year: "2025 Q3",
+    title: "AI Intern — Personifwy AI Division",
+    description: "Achieved 92% accuracy on text classification with TensorFlow. Reduced model inference time by 30% through optimization. Processed 5000+ images for object detection.",
+    icon: "🧠",
+    type: "work"
+  },
+  {
+    id: "t7",
+    year: "2025 Q4",
+    title: "IIT Bombay Techfest 2025 Workshop",
+    description: "Led technical workshops at IIT Bombay Techfest 2025 mentoring 500+ students in drone fabrication, IoT systems, and PID tuning.",
+    icon: "📡",
+    type: "achievement"
+  },
+  {
+    id: "t8",
+    year: "2025 Nov",
+    title: "Robotics SWE Intern — Botmakers",
+    description: "Engineered Sesame Quadruped — a research-grade 8-DOF robot under ₹4,000 with custom IK engine on ESP32-S2. Developed 'Physical AI' systems with MediaPipe + UDP.",
+    icon: "🦾",
+    type: "work"
+  },
+  {
+    id: "t9",
+    year: "2026",
+    title: "VectraSim Suite — Multi-Engine Simulation Platform",
+    description: "Built a browser-based robotics simulation platform with four standalone engine simulators — SLAM, drone swarm dynamics, logistics, and kinematics — running at 60FPS with zero backend.",
+    icon: "🚀",
+    type: "project"
   }
 ];
