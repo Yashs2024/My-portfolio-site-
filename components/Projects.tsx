@@ -1,0 +1,142 @@
+import React, { useState } from 'react';
+import { Github, ExternalLink, Code, ChevronRight } from 'lucide-react';
+import { PROJECTS } from '../constants';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Project } from '../types';
+
+const Projects: React.FC = () => {
+  const [filter, setFilter] = useState<'All' | 'Robotics' | 'AI/ML' | 'Automation'>('All');
+
+  const filteredProjects = filter === 'All' 
+    ? PROJECTS 
+    : PROJECTS.filter(p => p.category === filter || p.category === 'Other');
+
+  const filters = ['All', 'Robotics', 'AI/ML', 'Automation'];
+
+  return (
+    <section id="projects" className="py-20 bg-slate-850/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <motion.h2 
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold font-tech text-white mb-4"
+          >
+            Featured <span className="text-cyan-400">Projects</span>
+          </motion.h2>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="flex justify-center gap-4 flex-wrap mt-8"
+          >
+            {filters.map((f) => (
+              <button
+                key={f}
+                onClick={() => setFilter(f as any)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all border ${
+                  filter === f
+                    ? 'bg-cyan-500/20 border-cyan-400 text-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.2)]'
+                    : 'bg-slate-900 border-slate-700 text-gray-400 hover:border-cyan-500/50 hover:text-white'
+                }`}
+              >
+                {f}
+              </button>
+            ))}
+          </motion.div>
+        </div>
+
+        <motion.div 
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <AnimatePresence>
+            {filteredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.3 }}
+      className="group bg-slate-900/40 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_25px_rgba(34,211,238,0.2)] flex flex-col h-full focus-within:ring-2 focus-within:ring-cyan-400 focus-within:ring-offset-2 focus-within:ring-offset-slate-900"
+    >
+      <div className="relative h-48 overflow-hidden">
+        <img
+          src={project.imageUrl}
+          alt={project.title}
+          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-80"></div>
+        <div className="absolute bottom-4 left-4">
+          <span className="px-2 py-1 text-xs font-bold uppercase tracking-wider text-slate-900 bg-cyan-400 rounded-sm">
+            {project.category}
+          </span>
+        </div>
+      </div>
+
+      <div className="p-6 flex-1 flex flex-col">
+        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
+          {project.title}
+        </h3>
+        <p className="text-gray-400 text-sm mb-4 flex-1 line-clamp-4">
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mb-6">
+          {project.technologies.slice(0, 4).map((tech) => (
+            <span key={tech} className="flex items-center text-xs text-slate-300 bg-slate-800 px-2 py-1 rounded border border-slate-700">
+              <Code className="w-3 h-3 mr-1 text-cyan-500" />
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        <div className="flex items-center justify-between pt-4 border-t border-slate-800 mt-auto">
+          {project.githubUrl && (
+             <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center text-sm text-gray-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:text-cyan-400"
+            >
+              <Github className="w-4 h-4 mr-2" />
+              Code
+            </a>
+          )}
+          {project.demoUrl ? (
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center text-sm text-cyan-400 hover:text-cyan-300 transition-colors focus-visible:outline-none focus-visible:underline"
+            >
+              Live Demo
+              <ExternalLink className="w-4 h-4 ml-2" />
+            </a>
+          ) : (
+             <span className="flex items-center text-sm text-gray-600 cursor-not-allowed">
+                Internal Project
+                <ChevronRight className="w-4 h-4 ml-2" />
+             </span>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+export default Projects;
