@@ -1,5 +1,6 @@
 import { Project, Experience, Education, SkillCategory, ChartDataPoint, Achievement } from './types';
 import profileImage from './assets/profilee.jpg';
+import vectrasimImage from './assets/vectrasim.png.png';
 
 export const PERSONAL_INFO = {
   name: "Yash Surve",
@@ -80,7 +81,7 @@ export const PROJECTS: Project[] = [
     title: "🤖 VectraSim Suite — Multi-Engine Robotics Simulation Platform",
     description: "An interactive, browser-based, high-performance robotics simulation platform containing four standalone engine simulators accessible from a single cyber-themed hub. Designed as a modern educational tool for robotics, kinematics, logistics, and drone swarm flight dynamics. The platform operates completely in the browser—leveraging Vanilla JavaScript, HTML5 Canvas 2D, and Three.js WebGL rendering for 60FPS execution with zero backend dependencies.",
     technologies: ["JavaScript", "HTML5 Canvas", "Three.js", "WebGL", "Vite", "Algorithms"],
-    imageUrl: "https://raw.githubusercontent.com/Yashs2024/-robo-portfolio-site/main/assets/Screenshot%202026-07-01%20150456.png",
+    imageUrl: vectrasimImage,
     category: "Robotics",
     featured: true,
     githubUrl: "https://github.com/Yashs2024/robotic-Slam-lidar-simulator"
