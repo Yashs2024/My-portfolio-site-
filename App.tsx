@@ -13,7 +13,6 @@ import NewsTicker from './components/NewsTicker';
 import { PERSONAL_INFO } from './constants';
 import { motion } from 'framer-motion';
 
-const PathfindingVisualizer = lazy(() => import('./components/PathfindingVisualizer'));
 const InverseKinematics = lazy(() => import('./components/InverseKinematics'));
 const AssemblyLine = lazy(() => import('./components/AssemblyLine'));
 
@@ -52,21 +51,10 @@ const App: React.FC = () => {
                 viewport={{ once: true }}
                 className="text-gray-400 max-w-2xl mx-auto text-lg"
               >
-                Interactive demonstrations of algorithms and control systems. 
-                Use these tools to visualize how pathfinding and PID controllers work in real-time.
+                Interactive demonstrations of robotics algorithms and control systems. 
+                Use these tools to visualize robot kinematics and assembly workflows in real-time.
               </motion.p>
             </div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true, margin: "-50px" }}
-            >
-              <Suspense fallback={<div className="h-64 flex items-center justify-center text-cyan-400 font-mono animate-pulse">Loading Simulation...</div>}>
-                <PathfindingVisualizer />
-              </Suspense>
-            </motion.div>
             
             <motion.div
               initial={{ opacity: 0, y: 30 }}
